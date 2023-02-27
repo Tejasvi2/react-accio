@@ -14,3 +14,13 @@
     height: 1px;
     background: #eee;
     }
+
+    .container-wrapper{
+        padding: 12px !important;
+        
+    }
+
+    .pdf-height{
+        /* need to calcultae height with view port */
+        height: 600px; 
+    }

@@ -1,23 +1,24 @@
 import React,{useState, useEffect} from 'react'
-// Import the main component
-import { Viewer } from '@react-pdf-viewer/core'; // install this library
-// Plugins
-import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout'; // install this library
+
+
 // Import the styles
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
-// Worker
-import { Worker } from '@react-pdf-viewer/core'; // install this library
+
 import { ChatWindow } from '../chat-window/chat-window.component';
 import { useNavigate } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
+import './file-upload.scss';
+
+
+
+
 
 
 
 const FileUpload = () => {
   const navigate = useNavigate();
-    // Create new plugin instance
-  const defaultLayoutPluginInstance = defaultLayoutPlugin();
+  
   
   // for onchange event
   const [pdfFile, setPdfFile]=useState(null);
@@ -26,6 +27,8 @@ const FileUpload = () => {
   // for submit event
   const [viewPdf, setViewPdf]=useState(null);
   const [posts, setPosts] = useState([]);
+
+ 
 
   // onchange event
   const fileType=['application/pdf'];
@@ -75,7 +78,7 @@ const FileUpload = () => {
 
   // navigate with id to chat window
   const chatPage = (id) => {
-    navigate(`/chat/${id}`, )
+    navigate(`/chat/${id}`, { state: viewPdf } )
   }
 
 
@@ -84,14 +87,18 @@ const FileUpload = () => {
     <br></br> 
     {/* <button onClick={chatPage}>chat</button> */}
       <form className='form-group' onSubmit={handlePdfFileSubmit}>
-        <input type="file" className='form-control'
+       <div className='upload-wrapper'>
+
+        {/* 
+         */}
+        <input type="file" className='input-file'
           required onChange={handlePdfFileChange}
         />
         {pdfFileError&&<div className='error-msg'>{pdfFileError}</div>}
-        <br></br>
         <button type="submit" className='btn btn-success btn-lg'>
           UPLOAD
         </button>
+        </div>
       </form>
       <br></br>
       <h4>View PDF</h4>
@@ -121,7 +128,9 @@ const FileUpload = () => {
                                     <td>{val.userId}</td>
                                     <td>{val.title}</td>
                                     <td>{ new Date().getDate()}</td>
-                                    <td><button onClick={() => chatPage(val.id)}>chat</button></td>
+                                    <td>
+                                    <img onClick={() => chatPage(val.id)} src={require('../../assets/icons/chat.png')} className="upload-logo" />
+                                    </td>
                                   </tr>
                                 )
                               })}
