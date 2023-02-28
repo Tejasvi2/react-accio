@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import { useNavigate } from "react-router-dom";
-import './login.css'
+import './login.scss'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -50,11 +50,17 @@ const Login = () => {
 
  return (
     <>
+    <div className='login-container'>
     <div className='form-container'>
         <form  onSubmit={handleSubmit}>
-            <h3>Sign In</h3>
+            <h3 className='welcome-heading'>Welcome</h3>
+            <p>Login into your account</p>
+            <div className='seprater-container'>
+            <hr className='separater left'></hr>
+            <span className='hr-txt'>continue with</span>
+            <hr className='separater right'></hr>
+            </div>
             <div className="mb-3">
-            <label>Email address</label>
             <input
                 type="email"
                 className="form-control"
@@ -64,7 +70,6 @@ const Login = () => {
              {renderErrorMessage("uname")}
             </div>
             <div className="mb-3">
-            <label>Password</label>
             <input
                 type="password"
                 className="form-control"
@@ -75,14 +80,19 @@ const Login = () => {
             {renderErrorMessage("pass")}
             </div>
             <div className="d-grid">
-            <button type="submit" className="btn btn-primary">
-                Submit
+            <button type="submit" className="btn btn-primary login-btn">
+                LOGIN
             </button>
             </div>
             {/* <p className="forgot-password text-right">
             Forgot <a href="#">password?</a>
             </p> */}
         </form>
+    </div>
+    <div className='img-container'>
+    <img src={require('../../assets/icons/login-img.jpg')} className="upload-logo" />
+
+    </div>
     </div>
     </>
  )
