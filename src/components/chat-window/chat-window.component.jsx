@@ -1,21 +1,29 @@
-import React,{useState} from 'react'
-import './chat-window.css'
+import React,{useState} from 'react';
+import './chat-window.css';
+import { useLocation } from "react-router-dom";
+// Plugins
+import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout'; // install this library
+// Import the main component
+import { Viewer } from '@react-pdf-viewer/core'; // install this library
+// Worker
+import { Worker } from '@react-pdf-viewer/core'; // install this library
 
 
 const ChatWindow = () => {
+  // Create new plugin instance
+  const defaultLayoutPluginInstance = defaultLayoutPlugin();
+  const { state } = useLocation();
 return (
    <>
    <section style={{backgroundColor: "#eee"}}>
-  <div className="container py-5">
+  <div className="container container-wrapper">
 
     <div className="row d-flex justify-content-center">
-      <div className="col-md-10 col-lg-8 col-xl-6">
+      <div className="col-md-6 col-lg-6 col-xl-6">
 
         <div className="card" id="chat2">
           <div className="card-header d-flex justify-content-between align-items-center p-3">
             <h5 className="mb-0">Chat</h5>
-            <button type="button" className="btn btn-primary btn-sm" data-mdb-ripple-color="dark">Let's Chat
-              App</button>
           </div>
           <div className="card-body" data-mdb-perfect-scrollbar="true" style={{position: "relative", height: "400px", overflow: "auto"}}>
 
@@ -106,6 +114,12 @@ return (
           </div>
         </div>
 
+      </div>
+      <div className="col-md-6 col-lg-6 col-xl-6 pdf-height">
+      <Worker workerUrl="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js">
+                          <Viewer fileUrl={state}
+                              plugins={[defaultLayoutPluginInstance]} />
+    </Worker>
       </div>
     </div>
 
