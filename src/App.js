@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import FileUpload from './components/file-upload/file-upload.component';
 import ChatWindow from './components/chat-window/chat-window.component';
+import RecentUploads from './components/recent-uploads/recent-uploads.component';
 import Login from './components/login/login.component';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -13,6 +14,7 @@ function App() {
           <Route index element={<Login />} />
           <Route path="home" element={<FileUpload />} />
           <Route path="chat/:id" element={<ChatWindow />} />
+          <Route path="uploads" element={<RecentUploads />} />
       </Routes>
       </BrowserRouter>
     </div>
