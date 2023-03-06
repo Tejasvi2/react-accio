@@ -1,0 +1,56 @@
+.chat-container{
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    .margin-padding-0 {
+        margin: 0;
+        padding: 0;
+     }
+}
+#chat2 .form-control {
+    border-color: transparent;
+    }
+    
+    #chat2 .form-control:focus {
+    border-color: transparent;
+    box-shadow: inset 0px 0px 0px 1px transparent;
+    }
+    .card {
+        background: #E5F7FB !important;
+        .bot-cls{
+            background-color: rgb(134, 219, 235);
+            border-radius: 5px;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+        .user-cls{
+            background-color: #88888888;
+            border-radius: 5px;
+            vertical-align: middle;
+            margin-right: 3px;
+            margin-top: 4px;
+        }
+     }
+
+
+    
+    .divider:after,
+    .divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+    }
+
+    .container-wrapper{
+        padding: 12px !important;
+        
+    }
+
+    .pdf-height{
+        /* need to calcultae height with view port */
+        height: 600px; 
+    }

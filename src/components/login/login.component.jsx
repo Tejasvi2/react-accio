@@ -16,7 +16,7 @@ const Login = () => {
       password: "pass1"
     },
     {
-      username: "user2",
+      username: "user2@gmail.com",
       password: "pass2"
     }
   ];
@@ -35,6 +35,7 @@ const Login = () => {
             setErrorMessages({name: "pass", message: errors.pass});   
         } else {
             setIsSubmitted(true);
+            localStorage.setItem('userName', userData.username);
             navigate(`/home`)
         }
     } else {
