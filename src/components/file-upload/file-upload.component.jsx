@@ -72,7 +72,6 @@ const FileUpload = () => {
     }
   }
 
-  // navigate with id to chat window
 
 
 
@@ -89,9 +88,12 @@ const FileUpload = () => {
         reader.onloadend = (e) => {
           setPdfFile(e.target.result);
           setPdfFileError('');
-        }
-        console.log('herererere')
+          setViewPdf(pdfFile);
+          console.log({viewPdf}, {pdfFile})
 
+          navigate(`/uploads`, { state: e.target.result } )
+
+        }
       }
       else {
         setPdfFile(null);
@@ -108,18 +110,6 @@ const FileUpload = () => {
   return (
     <>
       <div className='file-container'>
-        {/* <form className='form-group' onSubmit={handlePdfFileSubmit}>
-       <div className='upload-wrapper'>
-        <input type="file" className='input-file'
-          required onChange={handlePdfFileChange}
-        />
-        {pdfFileError&&<div className='error-msg'>{pdfFileError}</div>}
-        <button type="submit" className='btn btn-success btn-lg'>
-          UPLOAD
-        </button>
-        </div>
-      </form>
-      <br></br> */}
         <form className='form-group' onSubmit={handlePdfFileSubmit}>
           <h4>Upload a file and see the magic</h4>
           <div className='upload-container'>
@@ -130,13 +120,14 @@ const FileUpload = () => {
               Upload
             </button>
           </div>
-        </form>
+        
 
         <input type="file"
           ref={hiddenFileInput}
           onChange={handleChange}
           style={{ display: 'none' }}
         />
+        </form>
       </div>
     </>
   )

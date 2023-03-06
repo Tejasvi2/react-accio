@@ -2,6 +2,7 @@ import { ChatWindow } from '../chat-window/chat-window.component';
 import React, { useState, useEffect } from 'react';
 import './recent-uploads.scss';
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 
 
@@ -10,7 +11,8 @@ const RecentUploads = () => {
     const navigate = useNavigate();
     const [viewPdf, setViewPdf] = useState('data');
     const [posts, setPosts] = useState([]);
-
+    const { state } = useLocation();
+    console.log({state})
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/posts?_limit=10')
@@ -27,7 +29,7 @@ const RecentUploads = () => {
 
 
     const chatPage = (id) => {
-        navigate(`/chat/${id}`, { state: viewPdf })
+        navigate(`/chat/${id}`, { state: state })
     }
     return (
         <>
