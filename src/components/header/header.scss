@@ -1,0 +1,32 @@
+.header-wrapper {
+    display: flex;
+    width: 100%;
+    padding: 12px;
+    border-bottom: 2px solid #000;
+
+    .logo-img {
+        width: 75%;
+        text-align: left;
+        padding: 0 40px;
+        font-size: 18px;
+        font-weight: 900;
+        color: #03045E;
+    }
+
+    .route-links {
+        width: 25%;
+        display: flex;
+        justify-content: space-evenly;
+        font-size: 14px;
+        font-weight: 400;
+
+        a {
+            text-decoration: none;
+            color: #000;
+
+            &.active {
+                color: #066CAA;
+            }
+        }
+    }
+}

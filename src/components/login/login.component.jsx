@@ -1,10 +1,10 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
 import './login.scss'
 
 const Login = () => {
   const navigate = useNavigate();
-
+  const [posts, setPosts] = useState([]);
   // React states
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -20,6 +20,18 @@ const Login = () => {
       password: "pass2"
     }
   ];
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts?_limit=10')
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            setPosts(data);
+        })
+        .catch((err) => {
+            console.log(err.message);
+        });
+}, []);
 
   const errors = {
     uname: "invalid username",

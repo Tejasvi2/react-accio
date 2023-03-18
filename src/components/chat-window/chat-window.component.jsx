@@ -7,7 +7,7 @@ import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout'; // insta
 import { Viewer } from '@react-pdf-viewer/core'; // install this library
 // Worker
 import { Worker } from '@react-pdf-viewer/core'; // install this library
-
+import Header from '../header/header.component';
 
 const ChatWindow = ({ socket }) => {
   // Create new plugin instance
@@ -50,6 +50,7 @@ const ChatWindow = ({ socket }) => {
   console.log({state})
   return (
     <>
+    <Header />
       <section style={{ backgroundColor: "#eee" }}>
         <div className="chat-container">
 

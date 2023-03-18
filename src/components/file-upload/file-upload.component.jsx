@@ -7,6 +7,7 @@ import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 
 import { useNavigate } from "react-router-dom";
 import './file-upload.scss';
+import Header from '../header/header.component';
 
 
 
@@ -109,6 +110,7 @@ const FileUpload = () => {
 
   return (
     <>
+    <Header />
       <div className='file-container'>
         <form className='form-group' onSubmit={handlePdfFileSubmit}>
           <h4>Upload a file and see the magic</h4>

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './recent-uploads.scss';
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-
+import Header from '../header/header.component';
 
 
 
@@ -33,7 +33,7 @@ const RecentUploads = () => {
     }
     return (
         <>
-            
+        <Header />
             <div className='pdf-container'>
                 {viewPdf && <>
                     <h6 class="header-txt">Recent uploads</h6>
