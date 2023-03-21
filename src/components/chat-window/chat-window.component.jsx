@@ -61,7 +61,7 @@ const ChatWindow = ({ socket }) => {
                 <div className="card-header d-flex justify-content-between align-items-center p-3">
                   <h5 className="mb-0">Chat</h5>
                 </div>
-                <div className="card-body" data-mdb-perfect-scrollbar="true" style={{ position: "relative", height: "463px", overflow: "auto" }}>
+                <div className="card-body" data-mdb-perfect-scrollbar="true" style={{ position: "relative", height: "87vh", overflow: "auto" }}>
                   <div className="divider d-flex align-items-center mb-4">
                     <p className="text-center mx-3 mb-0" style={{ color: "#a2aab7" }}>Today</p>
                   </div>
@@ -128,7 +128,7 @@ const ChatWindow = ({ socket }) => {
                       placeholder='Write message'
                       className='message form-control form-control-lg'
                       value={message}
-                      style={{ width: "570px" }}
+                      style={{ width: "100%" }}
                       onChange={e => setMessage(e.target.value)}
                       onKeyDown={handleTyping}
                     />
@@ -138,7 +138,7 @@ const ChatWindow = ({ socket }) => {
               </div>
 
             </div>
-            <div className="col-md-6 col-lg-6 col-xl-6 pdf-height margin-padding-0">
+            <div className="col-md-6 col-lg-6 col-xl-6 pdf-height margin-padding-0" style={{ height: "100vh" }}>
               <Worker workerUrl="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js">
                 <Viewer fileUrl={state}
                   plugins={[defaultLayoutPluginInstance]} />
