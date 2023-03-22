@@ -15,17 +15,37 @@ const RecentUploads = () => {
     console.log({state})
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/posts?_limit=10')
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
+        // fetch('https://jsonplaceholder.typicode.com/posts?_limit=10')
+        //     .then((response) => response.json())
+        //     .then((data) => {
+        //         console.log(data);
 
-                setPosts(data);
-            })
-            .catch((err) => {
-                console.log(err.message);
-            });
+        //         setPosts(data);
+        //     })
+        //     .catch((err) => {
+        //         console.log(err.message);
+        //     });
+        (async()=>{
+            const pdfData = await getPdf();
+            const postData = pdfData?.data;
+            setPosts(postData);
+        })();
     }, []);
+
+    async function getPdf() {
+        const username = await localStorage.getItem("userName")
+        console.log({username})
+        return fetch('http://18.223.213.190:5000/get_pdf_data', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'x-access-token': localStorage.getItem("token"),       
+          },
+          body: JSON.stringify({username})
+        })
+          .then(data => data.json())
+       }
 
 
     const chatPage = (id) => {
@@ -57,11 +77,11 @@ const RecentUploads = () => {
                                     {posts.map((val, key) => {
                                         return (
                                             <tr key={key}>
-                                                <td>{val.id}</td>
-                                                <td>{val.title}</td>
-                                                <td>{new Date().getDate()}</td>
+                                                <td>{val.doc_id}</td>
+                                                <td>{val.doc_name}</td>
+                                                <td>{val.timestamp}</td>
                                                 <td>
-                                                    <img onClick={() => chatPage(val.id)} src={require('../../assets/icons/chat.png')} className="upload-logo" />
+                                                    <img onClick={() => chatPage(val.doc_id)} src={require('../../assets/icons/chat.png')} className="upload-logo" />
                                                 </td>
                                             </tr>
                                         )
